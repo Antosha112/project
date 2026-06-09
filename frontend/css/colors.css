@@ -1,0 +1,32 @@
+/* Цвета колонок */
+.column.new-col {
+    background: rgba(239, 246, 255, 0.85);
+    border: 1px solid rgba(59, 130, 246, 0.5);
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.1);
+}
+
+.column.progress-col {
+    background: rgba(255, 247, 237, 0.85);
+    border: 1px solid rgba(249, 115, 22, 0.5);
+    box-shadow: 0 8px 32px rgba(245, 158, 11, 0.1);
+}
+
+.column.done-col {
+    background: rgba(236, 253, 245, 0.85);
+    border: 1px solid rgba(16, 185, 129, 0.5);
+    box-shadow: 0 8px 32px rgba(16, 185, 129, 0.1);
+}
+
+/* Цвета заголовков колонок */
+.new-col .column-header { border-bottom-color: #667eea; }
+.progress-col .column-header { border-bottom-color: #f59e0b; }
+.done-col .column-header { border-bottom-color: #10b981; }
+
+.new-col .column-title { color: #667eea; }
+.progress-col .column-title { color: #f59e0b; }
+.done-col .column-title { color: #10b981; }
+
+/* Цвета статус-тегов */
+.new-col .status-tag { background: #e0e7ff; color: #667eea; }
+.progress-col .status-tag { background: #fed7aa; color: #f59e0b; }
+.done-col .status-tag { background: #d1fae5; color: #10b981; }

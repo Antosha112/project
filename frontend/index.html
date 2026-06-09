@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>TaskFlow | Современный таск-менеджер</title>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/card.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<div class="board">
+    <div class="header">
+        <h1>⚡ TaskFlow</h1>
+        <p>Управляй задачами с удовольствием</p>
+    </div>
+
+    <div class="stats" id="statsContainer">
+        <div class="stat-card total">
+            <div class="stat-number" id="totalTasks">0</div>
+            <div class="stat-label">Всего задач</div>
+        </div>
+        <div class="stat-card new-metric">
+            <div class="stat-number" id="newTasksCount">0</div>
+            <div class="stat-label">📋 Новые</div>
+        </div>
+        <div class="stat-card progress-metric">
+            <div class="stat-number" id="inProgressCount">0</div>
+            <div class="stat-label">⚙️ В работе</div>
+        </div>
+        <div class="stat-card done-metric">
+            <div class="stat-number" id="doneCount">0</div>
+            <div class="stat-label">✅ Завершены</div>
+        </div>
+    </div>
+
+    <button class="global-add-btn" id="globalAddBtn">
+        <span style="font-size: 24px;">+</span> Добавить задачу
+    </button>
+
+    <div class="columns">
+        <div class="column new-col">
+            <div class="column-header">
+                <span class="column-title">📝 Новые</span>
+                <span class="column-count" id="newCountBadge">0</span>
+            </div>
+            <div class="task-list" id="newTasksList"></div>
+        </div>
+        <div class="column progress-col">
+            <div class="column-header">
+                <span class="column-title">🔄 В работе</span>
+                <span class="column-count" id="inprogressCountBadge">0</span>
+            </div>
+            <div class="task-list" id="inprogressTasksList"></div>
+        </div>
+        <div class="column done-col">
+            <div class="column-header">
+                <span class="column-title">🎉 Готово</span>
+                <span class="column-count" id="doneCountBadge">0</span>
+            </div>
+            <div class="task-list" id="doneTasksList"></div>
+        </div>
+    </div>
+</div>
+
+<div id="taskModal" class="modal">
+    <div class="modal-content">
+        <h3>✨ Создать задачу</h3>
+        <input type="text" id="modalTitle" placeholder="Название задачи *">
+        <textarea id="modalDesc" placeholder="Описание..."></textarea>
+        <select id="modalStatus">
+            <option value="Новая">📋 Новая</option>
+            <option value="В работе">🔄 В работе</option>
+            <option value="Завершена">✅ Завершена</option>
+        </select>
+        <div class="modal-actions">
+            <button class="cancel-btn" id="cancelModalBtn">Отмена</button>
+            <button class="save-btn" id="saveTaskBtn">Создать</button>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript Modules -->
+<script src="js/api.js"></script>
+<script src="js/stats.js"></script>
+<script src="js/render.js"></script>
+<script src="js/addtask.js"></script>
+<script src="js/editdelete.js"></script>
+<script src="js/websocket.js"></script>
+
+</body>
+</html>
