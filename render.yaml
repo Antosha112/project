@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: taskflow-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port 10000
+    envVars:
+      - key: MYSQL_HOST
+        value: taskflow-mysql-daskboard.k.aivencloud.com
+      - key: MYSQL_PORT
+        value: "26326"
+      - key: MYSQL_USER
+        value: avnadmin
+      - key: MYSQL_PASSWORD
+        value: AVNS_BxymJJVL0CcLv9tk4sy
+      - key: MYSQL_DB
+        value: defaultdb
