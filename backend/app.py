@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import Field, SQLModel, create_engine, Session, select, func
 import asyncio
 import json
-
+import os
 
 #Примечание 1: Перед работой с БД, создайте Базу Данных в MySQL с названием task_manager_db.
 #Примечание 1.1: Если таблица не создана, то:
@@ -32,16 +32,14 @@ import json
 #Примечание 295: ВАЖНО В САМОМ КОДЕ: В переменную MYQSL_PASSWORD введите свой пароль, который вы создавали когда устанавливали MySQL. Если MYSQL_PORT тоже отличается, то тоже поменяйте на свой.
 
 
+# Настройка БД (читаем переменные окружения)
+MYSQL_USER = os.environ.get("MYSQL_USER", "root")
+MYSQL_PASSWORD = os.environ.get("MYSQL_PASSWORD", "AVNS_BxymJJVL0CcLv9tk4sy")
+MYSQL_HOST = os.environ.get("MYSQL_HOST", "localhost")
+MYSQL_PORT = os.environ.get("MYSQL_PORT", "3306")
+MYSQL_DB = os.environ.get("MYSQL_DB", "task_manager_db")
 
-#Настройка БД
-MYSQL_USER = "root"
-MYSQL_PASSWORD = "root"
-MYSQL_HOST = "localhost"
-MYSQL_PORT = "3306"
-MYSQL_DB = "task_manager_db"
-
-mysql_url = f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DB}"
-
+mysql_url = f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DB}?ssl=require"
 
 #Запуск
 engine = create_engine(mysql_url, echo=True)
