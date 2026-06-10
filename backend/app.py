@@ -38,16 +38,15 @@ MYSQL_PASSWORD = os.environ.get("MYSQL_PASSWORD", "AVNS_BxymJJVL0CcLv9tk4sy")
 MYSQL_HOST = os.environ.get("MYSQL_HOST", "localhost")
 MYSQL_PORT = os.environ.get("MYSQL_PORT", "3306")
 MYSQL_DB = os.environ.get("MYSQL_DB", "task_manager_db")
+# Замените строку mysql_url на это:
+mysql_url = f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DB}"
 
-mysql_url = f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DB}?ssl=require"
-
-#Запуск
-engine = create_engine(mysql_url, echo=True)
-def get_session():
-    with Session(engine) as session:
-        yield session
-
-
+# А create_engine измените на:
+engine = create_engine(
+    mysql_url, 
+    echo=True,
+    connect_args={"ssl": {"ca": None}}  # Включаем SSL без проверки сертификата
+)
 #Таблица
 class TaskBase(SQLModel):
     title: str = Field(index=True)
