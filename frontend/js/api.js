@@ -1,6 +1,6 @@
 // API.js - все запросы к серверу
 
-const API_URL = 'http://localhost:8000';
+const API_URL = 'https://taskflow-backend-8359.onrender.com';
 
 // Глобальные переменные
 let currentTasks = [];
